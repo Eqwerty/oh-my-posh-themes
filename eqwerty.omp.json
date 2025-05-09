@@ -7,9 +7,9 @@
         {
           "background": "#00cc00",
           "foreground": "#000",
-          "leading_diamond": "\u256d\u2500\ue0b6",
+          "leading_diamond": "\ue0b6",
           "style": "diamond",
-          "template": " {{ .UserName }} ",
+          "template": "\ueba9 {{ .UserName }} ",
           "type": "session"
         },
         {
@@ -54,15 +54,8 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "#00cc00",
           "style": "plain",
-          "template": "\u2570\u2500",
-          "type": "text"
-        },
-        {
-          "foreground": "#00cc00",
-          "style": "plain",
-          "template": "\ue285",
+          "template": ">",
           "type": "text"
         }
       ],
