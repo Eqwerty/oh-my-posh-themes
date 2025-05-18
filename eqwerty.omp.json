@@ -24,6 +24,7 @@
           "type": "path"
         },
         {
+          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) (gt .StashCount 0) }}#ffc800{{ end }}"],
           "background": "#02cbd4",
           "foreground": "#000",
           "powerline_symbol": "\ue0b0",
