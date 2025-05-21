@@ -33,7 +33,7 @@
             "fetch_stash_count": true
           },
           "style": "powerline",
-          "template": "{{ if .Detached }}{{ if .Rebase }} {{ trimPrefix \"\uE0A0\" .Rebase.HEAD }}|REBASE {{ .Rebase.Current }}/{{ .Rebase.Total }}{{ else }} {{ if .Commit.Refs.Remotes }}{{ first .Commit.Refs.Remotes }} {{ end }}({{ abbrev 13 .Commit.Sha }}){{ end }}{{ else }}{{ if .Merge }} {{ .Ref }}{{ if .CherryPick }}|CHERRY-PICKING{{ else }}|MERGING{{ end }}{{ else }} {{ .Ref }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }} <#00b300>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#ff0000>{{ .Working.String }}</>{{ end }}{{ end }}{{ end }}{{ if gt .StashCount 0 }} @{{ .StashCount }}{{ end }} ",
+          "template": "{{ if .Detached }}{{ if .Rebase }} {{ trimPrefix \"\uE0A0\" .Rebase.HEAD }}|REBASE {{ .Rebase.Current }}/{{ .Rebase.Total }}{{ else }} {{ if .Commit.Refs.Remotes }}{{ first .Commit.Refs.Remotes }} {{ end }}({{ abbrev 13 .Commit.Sha }}){{ end }}{{ else }}{{ if .Merge }} {{ .Ref }}{{ if .CherryPick }}|CHERRY-PICKING{{ else if .Revert}}|REVERTING{{ else }}|MERGING{{ end }}{{ else }} {{ .Ref }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Staging.Changed }} <#00b300>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#ff0000>{{ .Working.String }}</>{{ end }}{{ end }}{{ end }}{{ if gt .StashCount 0 }} @{{ .StashCount }}{{ end }} ",
           "type": "git"
         },
         {
