@@ -1,11 +1,21 @@
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "session": "#00cc00",
+    "path": "#ff9900",
+    "git": "#02cbd4",
+    "git-changes": "#ffc800",
+    "git-stash": "#1a8cff",
+    "staging-string": "#00b300",
+    "working-string": "#ff0000",
+    "executiontime": "#ff1ac6"
+  },
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
-          "background": "#00cc00",
+          "background": "p:session",
           "foreground": "#000",
           "leading_diamond": "\ue0b6",
           "style": "diamond",
@@ -13,7 +23,7 @@
           "type": "session"
         },
         {
-          "background": "#ff9900",
+          "background": "p:path",
           "foreground": "#000",
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -24,8 +34,8 @@
           "type": "path"
         },
         {
-          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}#ffc800{{ end }}", "{{ if gt .StashCount 0 }}#1a8cff{{ end }}"],
-          "background": "#02cbd4",
+          "background_templates": ["{{ if or (.Working.Changed) (.Staging.Changed) }}p:git-changes{{ end }}", "{{ if gt .StashCount 0 }}p:git-stash{{ end }}"],
+          "background": "p:git",
           "foreground": "#000",
           "powerline_symbol": "\ue0b0",
           "properties": {
@@ -33,11 +43,11 @@
             "fetch_stash_count": true
           },
           "style": "powerline",
-          "template": "{{ if .Detached }}{{ if .Rebase }} {{ trimPrefix \"\uE0A0\" .Rebase.HEAD }}|REBASING {{ .Rebase.Current }}/{{ .Rebase.Total }}{{ else }} {{ if .Commit.Refs.Remotes }}{{ first .Commit.Refs.Remotes }} {{ end }}({{ abbrev 13 .Commit.Sha }}){{ end }}{{ else }}{{ if .Merge }} {{ .Ref }}{{ if .CherryPick }}|CHERRY-PICKING{{ else if .Revert}}|REVERTING{{ else }}|MERGING{{ end }}{{ else }} {{ .Ref }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ end }}{{ end }}{{ if .Staging.Changed }} <#00b300>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <#ff0000>{{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} @{{ .StashCount }}{{ end }} ",
+          "template": "{{ if .Detached }}{{ if .Rebase }} {{ trimPrefix \"\uE0A0\" .Rebase.HEAD }}|REBASING {{ .Rebase.Current }}/{{ .Rebase.Total }}{{ else }} {{ if .Commit.Refs.Remotes }}{{ first .Commit.Refs.Remotes }} {{ end }}({{ abbrev 13 .Commit.Sha }}){{ end }}{{ else }}{{ if .Merge }} {{ .Ref }}{{ if .CherryPick }}|CHERRY-PICKING{{ else if .Revert}}|REVERTING{{ else }}|MERGING{{ end }}{{ else }} {{ .Ref }}{{ if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ end }}{{ end }}{{ if .Staging.Changed }} <p:staging-string>{{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }} <p:working-string>{{ .Working.String }}</>{{ end }}{{ if gt .StashCount 0 }} @{{ .StashCount }}{{ end }} ",
           "type": "git"
         },
         {
-          "background": "#ff1ac6",
+          "background": "p:executiontime",
           "foreground": "#000",
           "properties": {
             "always_enabled": true
